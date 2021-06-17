@@ -23,9 +23,9 @@ class Student:
         return round(sum_hw / count, 2)
 
     def __str__(self):
-        res = f"Имя: {self.name}\n=\"" \
+        res = f"Имя: {self.name}\n"\
               f"Фамилия: {self.surname}\n"\
-              f"Сердняя оценка за ДЗ: {self.get_avg_grade()}"
+              f"Сердняя оценка за ДЗ: {self.get_avg_grade()}\n"
         return res
 
     def __lt__(self, other_student):
@@ -53,10 +53,11 @@ class Lecturer(Mentor):
         super().__init__(name, surname)
         self.grades = []
 
+
     def __str__(self):
-        res = f"Имя: {self.name}\n=\"" \
-              f"Фамилия: {self.surname}\n" \
-              f"Сердняя оценка за ДЗ: {self.get_avg_grade()}"
+        res = f"Имя: {self.name}\n"\
+              f"Фамилия: {self.surname}\n"\
+              f"Сердняя оценка за ДЗ: {sum(self.grades) / len(self.grades) :.2f}"
         return res
 
 
@@ -89,16 +90,17 @@ def get_avg_lect_grade(list_lect):
         total_sum += sum(lecturer.grades) / len(lecturer.grades)
         return total_sum / len(list_lect)
 
-
-
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
 
+
 cool_reviewer = Reviewer('Some', 'Buddy')
 cool_reviewer.courses_attached += ['Python']
+cool_reviewer.rate_hw(best_student, 'Python', 8)
+cool_reviewer.rate_hw(best_student, 'Python', 10)
+cool_reviewer.rate_hw(best_student, 'Python', 6)
 
-cool_reviewer.rate_hw(best_student, 'Python', 10)
-cool_reviewer.rate_hw(best_student, 'Python', 10)
-cool_reviewer.rate_hw(best_student, 'Python', 10)
+print(best_student)
+print(best_student.get_avg_grade())
 
-print(best_student.grades)
+

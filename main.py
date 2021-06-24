@@ -92,15 +92,29 @@ def get_avg_lect_grade(list_lect):
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
+best_student.finished_courses += ['Git']
+
+next_student = Student('Сергей', 'Жуков', 'деффка')
+next_student.courses_in_progress += ['Python']
+next_student.finished_courses += ['Git']
+
+
 
 
 cool_reviewer = Reviewer('Some', 'Buddy')
 cool_reviewer.courses_attached += ['Python']
+cool_reviewer.courses_attached += ['Git']
+
 cool_reviewer.rate_hw(best_student, 'Python', 8)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 6)
 
+cool_reviewer.rate_hw(next_student, 'Python', 6)
+cool_reviewer.rate_hw(next_student, 'Python', 6)
+cool_reviewer.rate_hw(next_student, 'Python', 9)
+
 print(best_student)
+print(next_student)
 print(best_student.get_avg_grade())
 
 
